@@ -1,7 +1,10 @@
-//-----------------------------------------------------------------
+﻿//-----------------------------------------------------------------
 //  Copyright 2010 Brady Wright and Above and Beyond Software
 //	All rights reserved
 //-----------------------------------------------------------------
+// Author : dandanshih
+// Date : 2014/6/13
+// Desc : 動態字型的加入
 
 #define WARN_ON_NO_MATERIAL
 #define WANT_NORMALS
@@ -25,27 +28,41 @@ public class SpriteText : MonoBehaviour, IUseCamera
 {
 	/// <remarks>
 	/// Which point of the text shares the position of the Transform.
+	/// 元件對齊方式
 	/// </remarks>
 	public enum Anchor_Pos
 	{
+		// 上左
 		Upper_Left,
+		// 上中
 		Upper_Center,
+		// 上右
 		Upper_Right,
+		// 中左
 		Middle_Left,
+		// 正中間
 		Middle_Center,
+		// 中右
 		Middle_Right,
+		// 下左
 		Lower_Left,
+		// 下中
 		Lower_Center,
+		// 下右
 		Lower_Right
 	}
 
 	/// <summary>
 	/// How the text will be aligned.
+	/// 文字對齊方式
 	/// </summary>
 	public enum Alignment_Type
 	{
+		// 左
 		Left,
+		// 中
 		Center,
+		// 右
 		Right
 	}
 
@@ -132,7 +149,9 @@ public class SpriteText : MonoBehaviour, IUseCamera
 
 	/// <summary>
 	/// Text asset that defines the font to be used.
+	/// 字圖形的對應檔
 	/// </summary>
+	
 	public TextAsset font;
 
 	/// <summary>
@@ -331,11 +350,18 @@ public class SpriteText : MonoBehaviour, IUseCamera
 	List<int> colorTags = new List<int>();
 	List<Color> cols = new List<Color>();
 	string[] lines;
-
-
+	
+	#region 動態字型變數區
+	
+	public Font dynamicFont = null;
+	
+	#endregion
+	
+	#region 初使化 SpriteText 區
 
 	protected virtual void Awake()
 	{
+		// 不重覆做 Awake 的動作
 		if (m_awake)
 			return;
 		m_awake = true;
@@ -343,49 +369,17 @@ public class SpriteText : MonoBehaviour, IUseCamera
 		// Determine if we are a clone:
 		if (name.EndsWith("(Clone)"))
 			isClone = true;
-
+		
+		// 抓掛在自己身上的 MeshFilter, MeshRenderer
 		meshFilter = (MeshFilter)GetComponent(typeof(MeshFilter));
 		meshRenderer = (MeshRenderer)GetComponent(typeof(MeshRenderer));
 
 		oldMesh = meshFilter.sharedMesh;
 		meshFilter.sharedMesh = null;
-
+		
+		// 做初使化的動作
 		Init();
 	}
-
-
-	public virtual void Start()
-	{
-		if (m_started)
-			return;
-		m_started = true;
-
-		// Free the default sharedMesh:
-		if (!isClone && Application.isPlaying)
-		{
-			Destroy(oldMesh);
-			oldMesh = null;
-		}
-
-		if (renderCamera == null)
-		{
-			if (UIManager.Exists() && UIManager.instance.uiCameras.Length > 0)
-			{
-				renderCamera = UIManager.instance.uiCameras[0].camera;
-			}
-			else
-				renderCamera = Camera.mainCamera;
-		}
-
-		SetCamera(renderCamera);
-
-		ProcessString(text);
-
-		// Force a mesh update:
-		updateColors = true;
-		UpdateMesh();
-	}
-
 
 	protected virtual void Init()
 	{
@@ -454,7 +448,40 @@ public class SpriteText : MonoBehaviour, IUseCamera
 		}
 		tabSpaces = sb.ToString();
 	}
+	
+	#endregion
+	
+	public virtual void Start()
+	{
+		if (m_started)
+			return;
+		m_started = true;
 
+		// Free the default sharedMesh:
+		if (!isClone && Application.isPlaying)
+		{
+			Destroy(oldMesh);
+			oldMesh = null;
+		}
+
+		if (renderCamera == null)
+		{
+			if (UIManager.Exists() && UIManager.instance.uiCameras.Length > 0)
+			{
+				renderCamera = UIManager.instance.uiCameras[0].camera;
+			}
+			else
+				renderCamera = Camera.main;
+		}
+
+		SetCamera(renderCamera);
+
+		ProcessString(text);
+
+		// Force a mesh update:
+		updateColors = true;
+		UpdateMesh();
+	}
 
 	// Creates a new mesh object, usually because
 	// our previous one was destroyed.

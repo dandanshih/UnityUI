@@ -940,7 +940,7 @@ public abstract class SpriteRoot : MonoBehaviour, IEZLinkedListItem<ISpriteAnima
 		}
 
 		if (renderCamera == null)
-			renderCamera = Camera.mainCamera;
+			renderCamera = Camera.main;
 
 		SetCamera(renderCamera);
 

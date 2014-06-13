@@ -1,0 +1,15 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MainControl.cs">
+    <Files>
+      <File FileName="Assets\NGUI\Scripts\UI\UIFont.cs" Line="416" Column="29" />
+      <File FileName="Assets\NGUI\Scripts\UI\UILabel.cs" Line="1684" Column="18" />
+      <File FileName="Assets\NGUI\Scripts\Internal\NGUIText.cs" Line="803" Column="13" />
+      <File FileName="Assets\Scripts\MainControl.cs" Line="17" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -98,6 +98,7 @@
      <Compile Include="Assets\Plugins\Sprite Scripts\Support\SpriteMesh.cs" />
      <Compile Include="Assets\Plugins\Sprite Scripts\Support\SpriteMesh_Managed.cs" />
      <Compile Include="Assets\Plugins\Sprite Scripts\Support\SpriteRoot.cs" />
+     <None Include="Assets\Fonts\L4_BasicFont.txt" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Font\Arial, Fancy.txt" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Shaders\Sprite Vertex Colored, Fast.shader" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Shaders\Sprite Simple Texture .shader" />

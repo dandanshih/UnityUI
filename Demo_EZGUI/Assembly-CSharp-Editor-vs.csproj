@@ -74,6 +74,7 @@
      <Compile Include="Assets\Editor\AnBSoft\Wizards\SetRenderCamera.cs" />
      <Compile Include="Assets\Editor\AnBSoft\Wizards\SpriteSizer.cs" />
      <Compile Include="Assets\Editor\AnBSoft\Wizards\SpriteTextSizer.cs" />
+     <None Include="Assets\Fonts\L4_BasicFont.txt" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Font\Arial, Fancy.txt" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Shaders\Sprite Vertex Colored, Fast.shader" />
      <None Include="Assets\Plugins\AnBSoft Common\Standard Shaders\Sprite Simple Texture .shader" />
